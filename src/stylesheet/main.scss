@@ -1,0 +1,8 @@
+@import "./project";
+
+$helloworld : 20px;
+
+p {
+    font-size: $helloworld;
+
+}
