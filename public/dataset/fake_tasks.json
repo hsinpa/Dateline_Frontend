@@ -1,0 +1,76 @@
+[
+    {
+        "id" : "task_01",
+        "name" : "採購咖啡豆",
+        "task_issues" : [
+            {
+                "id" : "task_issue_01",
+                "name" : "市場調查",
+                "description" : "",
+                "layer" : 0,
+                "issue_person" : "hsinpa",
+                "deadline" : "2020/06/02",
+                "accomplish_percentage" : 1,
+                "weights" : 1,
+                "expands" : []
+            },
+            {
+                "id" : "task_issue_02",
+                "name" : "咖啡豆採買",
+                "description" : "",
+                "layer" : 0,
+                "issue_person" : "hsinpa",
+                "deadline" : "2020/06/08",
+                "accomplish_percentage" : 1,
+                "weights" : 1,
+                "expands" : [
+                    {
+                        "id" : "task_issue_03",
+                        "name" : "非洲咖啡豆",
+                        "description" : "",
+                        "layer" : 1,
+                        "issue_person" : "hsinpa",
+                        "deadline" : "2020/02/28",
+                        "accomplish_percentage" : 0.8,
+                        "weights" : 0.6,
+                        "expands" : []
+                    },
+                    {
+                        "id" : "task_issue_04",
+                        "name" : "南美咖啡豆",
+                        "description" : "",
+                        "layer" : 1,
+                        "issue_person" : "hsinpa",
+                        "deadline" : "2020/02/28",
+                        "accomplish_percentage" : 0.6,
+                        "weights" : 0.4,
+                        "expands" : []
+                    }
+                ]
+            },
+
+            {
+                "id" : "task_issue_05",
+                "name" : "籌備商店",
+                "description" : "",
+                "layer" : 0,
+                "issue_person" : "hsinpa",
+                "deadline" : "2020/03/28",
+                "accomplish_percentage" : 0.6,
+                "weights" : 1,
+                "expands" : []
+            },
+            {
+                "id" : "task_issue_06",
+                "name" : "招募店員",
+                "description" : "",
+                "layer" : 0,
+                "issue_person" : "hsinpa",
+                "deadline" : "2020/03/28",
+                "accomplish_percentage" : 0.2,
+                "weights" : 1,
+                "expands" : []
+            }
+        ]
+    }
+]
