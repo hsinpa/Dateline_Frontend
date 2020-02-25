@@ -1,8 +1,38 @@
 import * as React from "react";
 import ProjectBox from "./ProjectBox";
+import {fetchPost} from "./ProjectActions";
+import {Dispatch} from "redux";
 
-class Project extends React.Component {
-    
+import {connect, ConnectedProps } from 'react-redux';
+
+
+
+const mapDispatch = (dispatch : Dispatch) => {
+    return {
+      // dispatching plain actions
+      increment: () => dispatch({ type: 'INCREMENT' }),
+      decrement: () => dispatch({ type: 'DECREMENT' }),
+      reset: () => dispatch({ type: 'RESET' }),
+      fetchData : () => (fetchPost(dispatch))
+    }
+  }
+
+// {
+//     fetchData: (dispatch : Dispatch) => dispatch({type : "He"})
+//   }
+
+
+  const connector = connect(
+    null,
+    mapDispatch
+  );
+
+  // The inferred type will look like:
+  // {isOn: boolean, toggleOn: () => void}
+  type PropsFromRedux = ConnectedProps<typeof connector>  
+  
+class Project extends React.Component<PropsFromRedux> {
+
     CreateProjectBox(generateNum : number) {
         let boxs = [];
 
@@ -13,6 +43,11 @@ class Project extends React.Component {
 
         return boxs;
     }
+
+    componentWillMount() {
+        
+        this.props.fetchData();
+    }
     
     render() {
         return <div className="container" id="project_main" >
@@ -21,4 +56,4 @@ class Project extends React.Component {
     }
 }
 
-export default Project;
+export default connector(Project)
