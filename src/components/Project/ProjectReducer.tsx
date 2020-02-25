@@ -24,8 +24,9 @@ export function ProjectReducer(state = initialState, action : pAction.ProjectAct
 
     switch (action.type) {
         case pAction.FETCH_POST:
-            console.log(action.payload);
-          return [...state, action.payload]
+        console.log(action.payload);
+
+          return action.payload;
     }
 
     return initialState;
