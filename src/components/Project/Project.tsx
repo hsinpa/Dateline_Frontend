@@ -51,8 +51,8 @@ class Project extends React.Component<PropsFromRedux> {
         return boxs;
     }
 
-    CreateTaskIssue(tasks : TaskIssueType[]) {
-        let issue_list = [];
+    CreateTaskIssue(tasks : TaskIssueType[]) : JSX.Element[]{
+        let issue_list : JSX.Element[] = [];
         let taskLength = tasks.length;
 
         if (taskLength <= 0) {
@@ -61,13 +61,22 @@ class Project extends React.Component<PropsFromRedux> {
         }
 
         for (let i = 0; i < taskLength; i++) {
-            let taskClassName = "task_list_layer_" + tasks[i].layer;
+            let layerType = (tasks[i].layer === 0) ? 0 : 1;
+            let taskClassName = "columns task_list_layer_" + layerType;
 
             issue_list.push(<li className={taskClassName}>
-                {tasks[i].name}
-            </li>);
-        }
+                <p className="column triangle-topleft">02/2020 AB</p>
+                <p className="column is-three-fifths">{tasks[i].name}</p>
+                <p className="column">70% A</p>
 
+            </li>);
+
+            if (tasks[i].expands.length > 0) {
+                let dependentTask = this.CreateTaskIssue(tasks[i].expands);
+                issue_list = issue_list.concat(dependentTask);    
+            }
+        }
+        
         return issue_list;
     }
 
