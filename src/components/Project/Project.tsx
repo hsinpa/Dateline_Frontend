@@ -4,9 +4,10 @@ import {RooterReducerType} from "../../Reducer/ReducerContainer";
 import {ProjectType, TaskIssueType} from "./ProjectReducer";
 
 import {fetchPost,setTaskIssues} from "./ProjectActions";
+import ProjectTask from "../TaskIssue/ProjectTask";
+
+
 import {Dispatch} from "redux";
-
-
 
 import {connect, ConnectedProps } from 'react-redux';
 
@@ -36,8 +37,6 @@ class Project extends React.Component<PropsFromRedux> {
     CreateProjectBox(project : ProjectType[]) {
         let boxs = [];
 
-        console.log(this.props.projects);
-
         let projectNum = project.length;
 
         for (let i = 0; i < projectNum; i++) {
@@ -50,6 +49,26 @@ class Project extends React.Component<PropsFromRedux> {
         }
 
         return boxs;
+    }
+
+    CreateTaskIssue(tasks : TaskIssueType[]) {
+        let issue_list = [];
+        let taskLength = tasks.length;
+
+        if (taskLength <= 0) {
+            issue_list.push(<p>No Task is assign to anyone</p>);
+            return issue_list;
+        }
+
+        for (let i = 0; i < taskLength; i++) {
+            let taskClassName = "task_list_layer_" + tasks[i].layer;
+
+            issue_list.push(<li className={taskClassName}>
+                {tasks[i].name}
+            </li>);
+        }
+
+        return issue_list;
     }
 
     componentWillMount() {
@@ -65,7 +84,7 @@ class Project extends React.Component<PropsFromRedux> {
         
             <div className="container" id="task_main">
                 <ul>
-                    <li>Hello world</li>
+                    {this.CreateTaskIssue(this.props.task)}
                 </ul>
             </div>
         

@@ -7,7 +7,7 @@ export function TaskIssueReducer(state = initialState, action : TaskIssueActionT
 
     switch (action.type) {
         case SET_TASK_ISSUE:
-          return [...action.payload];
+          return action.payload;
     }
 
     return state;
