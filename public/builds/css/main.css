@@ -1,4 +1,4 @@
-#task_main .task_list_layer_0{border-style:solid;border-width:2px;border-radius:5px;margin:0.2rem 0rem}#task_main .task_list_layer_1{border-style:solid;border-width:2px;border-radius:5px;margin:0.2rem 0rem;padding-left:2rem}.project_box{display:inline-block;border-style:solid;border-width:2px;border-radius:5px;margin:0.5rem 0.5rem}p{font-size:20px}
+#task_main li:hover{cursor:pointer;background-color:cadetblue}#task_main li .active{background-color:goldenrod}#task_main .task_list_layer_0{border-style:solid;border-width:2px;border-radius:5px;margin:0.2rem 0rem}#task_main .task_list_layer_1{border-style:solid;border-width:2px;border-radius:5px;margin:0.2rem 0rem;padding-left:2rem}.project_box{display:inline-block;border-style:solid;border-width:2px;border-radius:5px;margin:0.5rem 0.5rem}p{font-size:20px}
 
 
 /*# sourceMappingURL=main.css.map*/

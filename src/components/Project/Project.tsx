@@ -5,6 +5,7 @@ import {ProjectType, TaskIssueType} from "./ProjectReducer";
 
 import {fetchPost,setTaskIssues} from "./ProjectActions";
 import ProjectTask from "../TaskIssue/ProjectTask";
+import TaskDetail from "../TaskDetail/TaskDetail";
 
 
 import {Dispatch} from "redux";
@@ -51,54 +52,29 @@ class Project extends React.Component<PropsFromRedux> {
         return boxs;
     }
 
-    CreateTaskIssue(tasks : TaskIssueType[]) : JSX.Element[]{
-        let issue_list : JSX.Element[] = [];
-        let taskLength = tasks.length;
-
-        if (taskLength <= 0) {
-            issue_list.push(<p>No Task is assign to anyone</p>);
-            return issue_list;
-        }
-
-        for (let i = 0; i < taskLength; i++) {
-            let layerType = (tasks[i].layer === 0) ? 0 : 1;
-            let taskClassName = "columns task_list_layer_" + layerType;
-
-            issue_list.push(<li className={taskClassName}>
-                <p className="column triangle-topleft">02/2020 AB</p>
-                <p className="column is-three-fifths">{tasks[i].name}</p>
-                <p className="column">70% A</p>
-
-            </li>);
-
-            if (tasks[i].expands.length > 0) {
-                let dependentTask = this.CreateTaskIssue(tasks[i].expands);
-                issue_list = issue_list.concat(dependentTask);    
-            }
-        }
-        
-        return issue_list;
-    }
-
     componentWillMount() {
         this.props.fetchData();
 
     }
     
     render() {
-        return <div>
-            <div className="container" id="project_main" >
-                {this.CreateProjectBox(this.props.projects)}
-            </div>
-        
-            <div className="container" id="task_main">
-                <ul>
-                    {this.CreateTaskIssue(this.props.task)}
-                </ul>
-            </div>
-        
-        </div>
-        ;
+        return <div className="container">
+                <div className="columns">
+                    <div id="project_main"  className="column ">
+                        {this.CreateProjectBox(this.props.projects)}
+                    </div>
+
+                    <div className="column is-four-fifths">
+                        <ul>
+                            <ProjectTask/>
+                        </ul>
+                    </div>
+            
+                    <div className="column">
+                        <TaskDetail/>
+                    </div>
+                </div>
+            </div>;
     }
 }
 

@@ -5,7 +5,7 @@ export interface TaskIssueType {
     name : string,
     description : string,
     layer : number,
-    issue_perso? : string,
+    issue_person? : string,
     deadline? : string,
     accomplish_percentage? : number,
     weight? : number,

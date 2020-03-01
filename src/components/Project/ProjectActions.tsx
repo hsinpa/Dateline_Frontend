@@ -3,6 +3,7 @@ import {Dispatch} from "redux";
 
 export const FETCH_POST = "FETCH_POST";
 export const SET_TASK_ISSUE = "SET_TASK_ISSUE";
+export const SET_CURRENT_TASK = "SET_CURRENT_TASK";
 
 export const setTaskIssues = (dispatch : Dispatch, tasks: TaskIssueType[]) => {
     dispatch({
@@ -10,6 +11,13 @@ export const setTaskIssues = (dispatch : Dispatch, tasks: TaskIssueType[]) => {
         payload : tasks
     });
 }
+
+export const setCurrentTask = (dispatch : Dispatch, task : TaskIssueType) => {
+    dispatch({
+        type : SET_CURRENT_TASK,
+        payload : task
+    })
+  }
 
 export const fetchPost = (dispatch : Dispatch) => {
     try {
@@ -37,5 +45,11 @@ interface GetTaskIssueActionType {
     payload: TaskIssueType[]
 }
 
+interface SetTaskDetailActionType {
+    type: string,
+    payload: TaskIssueType
+}
+
 export type ProjectActionType = GetProjectActionType;
 export type TaskIssueActionType = GetTaskIssueActionType;
+export type TaskDetailActionType = SetTaskDetailActionType;

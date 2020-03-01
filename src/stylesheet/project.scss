@@ -11,6 +11,18 @@
 
 #task_main {
 
+    li {
+
+    }
+    li:hover {
+        cursor: pointer;
+        background-color: cadetblue;
+    }
+
+    li .active {
+        background-color: goldenrod;
+    }
+
     .task_list_layer_0 {
         @include task_list_layer;
     }

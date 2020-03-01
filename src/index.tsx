@@ -17,7 +17,7 @@ console.log(store.getState());
 
 ReactDOM.render(
     <Provider store={store}>
-    <div><Project/><Hello compiler="Typescript" framework="React"/></div>
+    <div><Project/></div>
     </Provider>,
 
     document.getElementById("dateline_app")
