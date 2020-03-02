@@ -44,4 +44,11 @@
     margin: 0.5rem 0.5rem;
   }
 
-  
+  .modal {
+    position: absolute;
+    left: 15%;
+    top: 10%;
+    //transform: translate(-9%, -5%);
+    display: block;
+    background-color: gainsboro;
+  }

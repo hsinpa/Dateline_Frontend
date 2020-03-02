@@ -4,7 +4,9 @@ import {RooterReducerType} from "../../Reducer/ReducerContainer";
 import {ProjectType, TaskIssueType} from "./ProjectReducer";
 
 import {fetchPost,setTaskIssues} from "./ProjectActions";
-import ProjectTask from "../TaskIssue/ProjectTask";
+import ProjectTask from "../Activity/ProjectTask";
+import CreateActModal from "../Activity/CreateActModal";
+
 import TaskDetail from "../TaskDetail/TaskDetail";
 
 
@@ -58,20 +60,24 @@ class Project extends React.Component<PropsFromRedux> {
     }
     
     render() {
-        return <div className="container">
-                <div className="columns">
-                    <div id="project_main"  className="column ">
-                        {this.CreateProjectBox(this.props.projects)}
-                    </div>
+        return <div>
+                <CreateActModal />
 
-                    <div className="column is-four-fifths">
-                        <ul>
-                            <ProjectTask/>
-                        </ul>
-                    </div>
-            
-                    <div className="column">
-                        <TaskDetail/>
+                <div className="container">
+                    <div className="columns">
+                        <div id="project_main"  className="column ">
+                            {this.CreateProjectBox(this.props.projects)}
+                        </div>
+
+                        <div className="column is-four-fifths">
+                            <ul>
+                                <ProjectTask/>
+                            </ul>
+                        </div>
+                
+                        <div className="column">
+                            <TaskDetail/>
+                        </div>
                     </div>
                 </div>
             </div>;

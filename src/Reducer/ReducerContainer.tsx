@@ -2,7 +2,7 @@ import {combineReducers} from 'redux';
 
 import {ProjectReducer, ProjectType, TaskIssueType} from '../components/Project/ProjectReducer';
 
-import {TaskIssueReducer} from '../components/TaskIssue/TaskIssueReducer';
+import {TaskIssueReducer} from '../components/Activity/TaskIssueReducer';
 import {TaskDetailReducer} from '../components/TaskDetail/TaskDetailReducer';
 
 export interface RooterReducerType{
