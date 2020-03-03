@@ -8,7 +8,6 @@ import {Dispatch} from "redux";
 import {connect, ConnectedProps } from 'react-redux';
 import Datepicker from 'react-datepicker';
 import * as ReactModal from 'react-modal';
-import {Editor, EditorState} from 'draft-js';
 
 const mapDispatch = (dispatch : Dispatch) => {
     return {
@@ -31,34 +30,25 @@ type PropsFromRedux = ConnectedProps<typeof connector>
 class CreateActModal extends React.Component<PropsFromRedux> {
 
     date : Date;
-    editor : Editor;
     state = {
         showModal: true,
-        editorState : EditorState.createEmpty()
     };
+
     constructor(props : PropsFromRedux) {
         super(props);
 
         this.onCalendarChange = this.onCalendarChange.bind(this);
         this.handleOpenModal = this.handleOpenModal.bind(this);
         this.handleCloseModal = this.handleCloseModal.bind(this);
-        this.onChange = this.onChange.bind(this);
-        this.setEditor = this.setEditor.bind(this);
-
-        this.onChange = (editorState) => this.setState({editorState});
-        this.setEditor = (editor) => {
-            this.editor = editor;
-          };
+        this.onEditorChange = this.onEditorChange.bind(this);
 
         this.date = new Date();
     }
 
-    onChange(editorState : EditorState) {
-    }
+    onEditorChange(value : Node[]) {
 
-    setEditor(editor : Editor) {
-    }
 
+    }
 
     onCalendarChange(date : Date) {
         this.date = date;
@@ -89,17 +79,47 @@ class CreateActModal extends React.Component<PropsFromRedux> {
                 <h1>Create Activity</h1>
                 <label>Subject</label>
                 <input></input>
-
+                <br/>
                 <label>Description</label>
                 <input></input>
 
-                <Datepicker selected={this.date} onChange={this.onCalendarChange}></Datepicker>
+                <br/>
+                <textarea>Type your project description</textarea>
 
-                <Editor
-                ref={this.setEditor}
-                editorState={this.state.editorState}
-                onChange={this.onChange}
-                />
+                <div className="columns">
+                    <div className="column">
+                        <label>Date issue</label>
+                        <Datepicker selected={this.date} onChange={this.onCalendarChange}></Datepicker>
+                        <br/>
+                        <label>Priority</label>
+                        <select id="priority">
+                            <option value="0">P0</option>
+                            <option value="1">P1</option>
+                            <option value="2">P2</option>
+                            <option value="3">P3</option>
+                        </select>
+                    </div>
+
+                    <div className="column">
+                        <label>Assignee</label>
+                        <select id="assignee">
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                            <option value="mercedes">Mercedes</option>
+                            <option value="audi">Audi</option>
+                        </select>
+                        <br/>
+
+                        <label>Notify</label>
+                        <select id="notify">
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                            <option value="mercedes">Mercedes</option>
+                            <option value="audi">Audi</option>
+                        </select>  
+                    </div>
+    
+                </div>
 
             </form>
 

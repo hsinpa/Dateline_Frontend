@@ -62,7 +62,8 @@ module.exports = {
         "react-dom": "ReactDOM",
         "redux": "Redux",
         "react-redux": "ReactRedux",
-        "draft-js" :"Draft",
         "react-modal" : "ReactModal", 
+        "react-datepicker" : "ReactDatepicker", 
+
     }
 };
