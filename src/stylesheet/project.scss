@@ -45,12 +45,17 @@
   }
 
   .activity_modal {
+        height: 100%;
+    
         .file {
             justify-content: center !important;
         }
         
         nav {
             text-align: right;
+            position: absolute;
+            bottom: 0;        
+            right:0;  
             button {
                 margin: 0 5px;
             }
