@@ -6,7 +6,7 @@ import {RooterReducerType} from "../../Reducer/ReducerContainer";
 import {setCurrentTask} from "../Project/ProjectActions";
 import {Dispatch} from "redux";
 import {connect, ConnectedProps } from 'react-redux';
-import Datepicker from 'react-datepicker';
+import Datepicker from 'react-date-picker';
 import * as ReactModal from 'react-modal';
 
 const mapDispatch = (dispatch : Dispatch) => {
@@ -26,13 +26,18 @@ const connector = connect(
 // The inferred type will look like:
 // {isOn: boolean, toggleOn: () => void}
 type PropsFromRedux = ConnectedProps<typeof connector>
-  
-class CreateActModal extends React.Component<PropsFromRedux> {
 
-    date : Date;
+
+type ModalState = {
+    showModal: boolean,
+    date : Date
+}
+
+class CreateActModal extends React.Component<PropsFromRedux, ModalState> {
+
     state = {
-        showModal: true,
-    };
+        showModal : true, date : new Date()
+    }
 
     constructor(props : PropsFromRedux) {
         super(props);
@@ -41,8 +46,6 @@ class CreateActModal extends React.Component<PropsFromRedux> {
         this.handleOpenModal = this.handleOpenModal.bind(this);
         this.handleCloseModal = this.handleCloseModal.bind(this);
         this.onEditorChange = this.onEditorChange.bind(this);
-
-        this.date = new Date();
     }
 
     onEditorChange(value : Node[]) {
@@ -51,7 +54,8 @@ class CreateActModal extends React.Component<PropsFromRedux> {
     }
 
     onCalendarChange(date : Date) {
-        this.date = date;
+        console.log(date);
+        this.setState({date : date });
     }
 
     handleOpenModal () {
@@ -75,34 +79,34 @@ class CreateActModal extends React.Component<PropsFromRedux> {
             onRequestClose={this.handleCloseModal}
             shouldCloseOnOverlayClick={true}>
 
-            <form className="container">
+            <form className="container activity_modal">
                 <h1>Create Activity</h1>
-                <label>Subject</label>
-                <input></input>
                 <br/>
-                <label>Description</label>
-                <input></input>
-
+                <input className="input" placeholder="Subject"></input>
+                <br/><br/>
+                <label className="label">Description</label>
+                <textarea className="textarea" placeholder="Type your project description"></textarea>
                 <br/>
-                <textarea>Type your project description</textarea>
 
                 <div className="columns">
                     <div className="column">
-                        <label>Date issue</label>
-                        <Datepicker selected={this.date} onChange={this.onCalendarChange}></Datepicker>
+                        <label className="label">Date issue</label>
+                        <Datepicker value={this.state.date} onChange={this.onCalendarChange}></Datepicker>
                         <br/>
-                        <label>Priority</label>
-                        <select id="priority">
+                        <label className="label">Priority</label>
+                        <select id="priority" className="select">
                             <option value="0">P0</option>
                             <option value="1">P1</option>
                             <option value="2">P2</option>
                             <option value="3">P3</option>
+                            <option value="4">P4</option>
+
                         </select>
                     </div>
 
                     <div className="column">
-                        <label>Assignee</label>
-                        <select id="assignee">
+                        <label className="label">Assignee</label>
+                        <select id="assignee" className="select">
                             <option value="volvo">Volvo</option>
                             <option value="saab">Saab</option>
                             <option value="mercedes">Mercedes</option>
@@ -110,16 +114,36 @@ class CreateActModal extends React.Component<PropsFromRedux> {
                         </select>
                         <br/>
 
-                        <label>Notify</label>
-                        <select id="notify">
+                        <label className="label">Notify</label>
+                        <select id="notify" className="select">
                             <option value="volvo">Volvo</option>
                             <option value="saab">Saab</option>
                             <option value="mercedes">Mercedes</option>
                             <option value="audi">Audi</option>
                         </select>  
                     </div>
-    
                 </div>
+                <div className="file has-name is-boxed">
+                    <label className="file-label">
+                        <input className="file-input" type="file" name="resume"/>
+                        <span className="file-cta">
+                            <span className="file-icon">
+                                <i className="fas fa-upload"></i>
+                            </span>
+                            <span className="file-label">
+                                Choose a file…
+                            </span>
+                        </span>
+                        <span className="file-name">
+                            NoManSkysuck.png
+                        </span>
+                    </label>
+                </div>
+
+            <nav >
+                <button className="button is-danger" onClick={this.handleCloseModal}>Close</button>
+                <button className="button is-primary">Create</button>
+            </nav>
 
             </form>
 
