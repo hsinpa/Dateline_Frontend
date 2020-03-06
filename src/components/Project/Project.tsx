@@ -39,7 +39,7 @@ class Project extends React.Component<PropsFromRedux> {
 
     CreateProjectBox(project : ProjectType[]) {
         let boxs = [];
-
+        console.log("CreateProjectBox");
         let projectNum = project.length;
 
         for (let i = 0; i < projectNum; i++) {
@@ -55,8 +55,9 @@ class Project extends React.Component<PropsFromRedux> {
     }
 
     componentWillMount() {
-        this.props.fetchData();
-
+        if (this.props.projects.length == 0) {
+            this.props.fetchData();
+        }
     }
     
     render() {

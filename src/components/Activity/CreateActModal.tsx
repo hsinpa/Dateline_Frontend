@@ -3,16 +3,20 @@ import {TaskIssueType} from "../Project/ProjectReducer";
 
 import * as React from "react";
 import {RooterReducerType} from "../../Reducer/ReducerContainer";
-import {setCurrentTask} from "../Project/ProjectActions";
+import {setCurrentTask, addNewActivity} from "../Project/ProjectActions";
 import {Dispatch} from "redux";
 import {connect, ConnectedProps } from 'react-redux';
 import Datepicker from 'react-date-picker';
 import * as ReactModal from 'react-modal';
 
+import {UtilityFunctions} from '../../utility/Utility';
+
 const mapDispatch = (dispatch : Dispatch) => {
     return {
+        addNewActivity :  (task : TaskIssueType) => (addNewActivity(dispatch, task)),
     }
 }
+
 
 const mapState = (state: RooterReducerType) => ({
     taskIssues: state.taskIssues
@@ -58,7 +62,19 @@ class CreateActModal extends React.Component<PropsFromRedux, ModalState> {
 
     onFormSubmit(e: React.FormEvent ) {
         e.preventDefault();
-        console.log("Hello world4");
+
+        let sendTask : TaskIssueType = {
+            name : this.state.subject,
+            id : UtilityFunctions.GetRandomID(),
+            description : this.state.description,
+            deadline : this.state.date.toDateString(),
+            expands : [],
+            layer : 0
+        };
+
+        this.props.addNewActivity(sendTask);
+
+        this.handleCloseModal();
     }
 
     onCalendarChange(date : Date) {

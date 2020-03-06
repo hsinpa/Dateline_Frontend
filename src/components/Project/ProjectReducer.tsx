@@ -1,4 +1,5 @@
 import * as pAction from "./ProjectActions";
+import { ADD_ACTIVITY} from "../Project/ProjectActions";
 
 export interface TaskIssueType {
     id : string,
@@ -20,11 +21,20 @@ export interface ProjectType {
 
 const initialState : ProjectType[] = [];
 
-export function ProjectReducer(state = initialState, action : pAction.ProjectActionType ) : ProjectType[] {
+export function ProjectReducer(state = initialState, action : any ) : ProjectType[] {
 
     switch (action.type) {
         case pAction.FETCH_POST:
           return action.payload;
+
+          case ADD_ACTIVITY:
+            if (state.length > 0) {
+                let newProject = [...state];
+                newProject[0].task_issues = [...newProject[0].task_issues ,action.payload ];
+                console.log(newProject);
+                return  newProject;
+            }
+        break;
     }
 
     return state;

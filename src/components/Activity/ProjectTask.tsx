@@ -51,6 +51,8 @@ class ProjectTask extends React.Component<PropsFromRedux> {
             return issue_list;
         }
 
+        console.log(tasks);
+
         for (let i = 0; i < taskLength; i++) {
             let layerType = (tasks[i].layer === 0) ? 0 : 1;
             let taskClassName = "columns task_list_layer_" + layerType;
@@ -86,6 +88,7 @@ class ProjectTask extends React.Component<PropsFromRedux> {
 
     componentWillMount() {
         this.flat_task_list = [];
+        console.log("componentWillMount");
     }
     
     render() {
