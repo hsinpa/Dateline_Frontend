@@ -1,5 +1,5 @@
 
-import {TaskIssueType} from "../Project/ProjectReducer";
+import { TaskIssueType} from '../../utility/TypeFlag'
 
 import * as React from "react";
 import {RooterReducerType} from "../../Reducer/ReducerContainer";
@@ -42,7 +42,7 @@ type ModalState = {
 class CreateActModal extends React.Component<PropsFromRedux, ModalState> {
 
     state = {
-        showModal : true, date : new Date(),
+        showModal : false, date : new Date(),
         subject : "", description : "", priority :"0", assignee: "empty", notify:"empty"
     }
 

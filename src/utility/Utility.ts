@@ -5,3 +5,17 @@ export const UtilityFunctions = {
         return number.toString(36).substr(2, 9); // 'xtis06h6'
     }
 }
+
+export const PostFetch = function(url : string, callback : (data:any) => void) {
+    try {
+        //fetch("./dataset/fake_tasks.json")
+
+        fetch(url)
+        .then(res => res.json())
+        .then(posts => {
+            callback(posts)            
+        });
+    } catch (error) {
+      console.error(error);
+    }
+}

@@ -1,14 +1,12 @@
 import * as React from "react";
 import ProjectBox from "./ProjectBox";
 import {RooterReducerType} from "../../Reducer/ReducerContainer";
-import {ProjectType, TaskIssueType} from "./ProjectReducer";
+import {ProjectType} from '../../utility/TypeFlag'
+import PackageListView from "../Package/PackageActivityListView";
 
-import {fetchPost,setTaskIssues} from "./ProjectActions";
-import ProjectTask from "../Activity/ProjectTask";
+import {fetchPost, setCurrentProject} from "./ProjectActions";
 import CreateActModal from "../Activity/CreateActModal";
-
-import TaskDetail from "../TaskDetail/TaskDetail";
-
+import {ActionFlag,TestJSONPath} from "../../utility/EventFlag";
 
 import {Dispatch} from "redux";
 
@@ -16,14 +14,13 @@ import {connect, ConnectedProps } from 'react-redux';
 
 const mapDispatch = (dispatch : Dispatch) => {
     return {
-        fetchData : () => (fetchPost(dispatch)),
-        setTaskIssues : (task : TaskIssueType[]) => (setTaskIssues(dispatch, task))
+        fetchData : () => (fetchPost(dispatch, ActionFlag.FETCH_PROEJCT, TestJSONPath.FakeProject)),
+        setCurrentProject : (project : ProjectType) => (setCurrentProject(dispatch, project))
     }
 }
 
 const mapState = (state: RooterReducerType) => ({
-    projects: state.projects,
-    task : state.taskIssues
+    projects: state.project_structure.projects
 });
 
 const connector = connect(
@@ -37,18 +34,22 @@ type PropsFromRedux = ConnectedProps<typeof connector>
   
 class Project extends React.Component<PropsFromRedux> {
 
+    constructor(props: PropsFromRedux) {
+        super(props);
+
+      }
+
     CreateProjectBox(project : ProjectType[]) {
         let boxs = [];
-        console.log("CreateProjectBox");
         let projectNum = project.length;
 
         for (let i = 0; i < projectNum; i++) {
             let titleName = "Project name " + (project[i].name);
             boxs.push(<ProjectBox title={titleName} />);
-        }
 
-        if (projectNum > 0) {
-            this.props.setTaskIssues(project[0].task_issues);
+            if (i == 0) {
+                this.props.setCurrentProject(project[i]);
+            }
         }
 
         return boxs;
@@ -72,12 +73,12 @@ class Project extends React.Component<PropsFromRedux> {
 
                         <div className="column is-four-fifths">
                             <ul>
-                                <ProjectTask/>
+                                <PackageListView/>
                             </ul>
                         </div>
                 
                         <div className="column">
-                            <TaskDetail/>
+                            {/* <TaskDetail/> */}
                         </div>
                     </div>
                 </div>

@@ -1,18 +1,19 @@
 import {combineReducers} from 'redux';
 
-import {ProjectReducer, ProjectType, TaskIssueType} from '../components/Project/ProjectReducer';
+import {ProjectReducer, ProjectStructure} from '../components/Project/ProjectReducer';
+import {ProjectType, TaskIssueType} from '../utility/TypeFlag'
 
 import {TaskIssueReducer} from '../components/Activity/TaskIssueReducer';
-import {TaskDetailReducer} from '../components/TaskDetail/TaskDetailReducer';
+import {PackageReducer, PackageStructure} from '../components/Package/PackageReducer';
 
 export interface RooterReducerType{
-    projects : ProjectType[],
+    project_structure : ProjectStructure,
     taskIssues : TaskIssueType[],
-    taskDetail : TaskIssueType
+    packages : PackageStructure
 }
 
 export const Reducer = combineReducers({
-    projects : ProjectReducer,
+    project_structure : ProjectReducer,
     taskIssues : TaskIssueReducer,
-    taskDetail : TaskDetailReducer
+    packages : PackageReducer
 });

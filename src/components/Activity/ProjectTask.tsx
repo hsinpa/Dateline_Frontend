@@ -1,6 +1,5 @@
 
-import {TaskIssueType} from "../Project/ProjectReducer";
-
+import { TaskIssueType} from '../../utility/TypeFlag'
 import * as React from "react";
 import {RooterReducerType} from "../../Reducer/ReducerContainer";
 import {setCurrentTask} from "../Project/ProjectActions";

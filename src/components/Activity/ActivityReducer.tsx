@@ -1,12 +1,13 @@
-import {TaskIssueType} from "../Project/ProjectReducer";
-import {TaskDetailActionType, ADD_ACTIVITY} from "../Project/ProjectActions";
+import {TaskDetailActionType} from "../Project/ProjectActions";
+import {ActionFlag} from "../../utility/EventFlag";
+import {TaskIssueType} from '../../utility/TypeFlag'
 
 const initialState : TaskIssueType[] = [];
 
 export function ActivityEditReducer(state = initialState, action : TaskDetailActionType ) : TaskIssueType[] {
 
     switch (action.type) {
-        case ADD_ACTIVITY:
+        case ActionFlag.ADD_ACTIVITY:
              return  [...state ,action.payload ];     
     }
 

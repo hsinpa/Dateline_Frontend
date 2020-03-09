@@ -1,21 +1,17 @@
-import {TaskIssueType, ProjectType} from "./ProjectReducer";
 import {Dispatch} from "redux";
-
-export const FETCH_POST = "FETCH_POST";
-export const SET_TASK_ISSUE = "SET_TASK_ISSUE";
-export const SET_CURRENT_TASK = "SET_CURRENT_TASK";
-export const ADD_ACTIVITY = "ADD_ACTIVITY";
+import {ProjectType, TaskIssueType} from '../../utility/TypeFlag'
+import {ActionFlag} from "../../utility/EventFlag";
 
 export const setTaskIssues = (dispatch : Dispatch, tasks: TaskIssueType[]) => {
     dispatch({
-        type : SET_TASK_ISSUE,
+        type : ActionFlag.SET_CURRENT_TASK,
         payload : tasks
     });
 }
 
 export const setCurrentTask = (dispatch : Dispatch, task : TaskIssueType) => {
     dispatch({
-        type : SET_CURRENT_TASK,
+        type : ActionFlag.SET_CURRENT_TASK,
         payload : task
     })
   }
@@ -23,19 +19,28 @@ export const setCurrentTask = (dispatch : Dispatch, task : TaskIssueType) => {
   export const addNewActivity = (dispatch : Dispatch, task : TaskIssueType) => {
 
     dispatch({
-        type : ADD_ACTIVITY,
+        type : ActionFlag.ADD_ACTIVITY,
         payload : task
     })
   }
 
-export const fetchPost = (dispatch : Dispatch) => {
+ 
+export const setCurrentProject = (dispatch : Dispatch, task : ProjectType) => {
+    dispatch({
+        type : ActionFlag.SET_CURRENT_PROJECT,
+        payload : task
+    })
+  } 
+
+export const fetchPost = (dispatch : Dispatch, type: string, url : string) => {
     try {
-        fetch("./dataset/fake_tasks.json")
+        //fetch("./dataset/fake_tasks.json")
+
+        fetch(url)
         .then(res => res.json())
         .then(posts => {
-
             dispatch({
-                type : FETCH_POST,
+                type : type,
                 payload : posts
             })
         });

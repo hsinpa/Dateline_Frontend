@@ -1,17 +1,20 @@
 [   
     {
         "id" : "package_01",
+        "project_id" : "project_id_01",
         "name" : "直接回報項目",
         "manager" : "pm@gmail.com"
     },
     {
         "id" : "package_02",
+        "project_id" : "project_id_01",
         "name" : "咖啡豆採買",
         "manager" : "manager01@gmail.com"
-    }
+    },
 
     {
         "id" : "package_03",
+        "project_id" : "project_id_01",
         "name" : "做咖啡",
         "manager" : "manager01@gmail.com"
     }
