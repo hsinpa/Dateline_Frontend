@@ -19,7 +19,7 @@ const mapDispatch = (dispatch : Dispatch) => {
 
 
 const mapState = (state: RooterReducerType) => ({
-    taskIssues: state.taskIssues
+    //taskIssues: state.taskIssues
 });
 
 const connector = connect(

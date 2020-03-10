@@ -27,7 +27,6 @@ export function ProjectReducer(state = initialState, action : any ) : ProjectStr
                 ...state,
                 selected_project: action.payload
               };
-        break;
     }
 
     return state;

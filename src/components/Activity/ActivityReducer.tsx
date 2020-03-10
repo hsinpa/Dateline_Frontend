@@ -1,15 +1,27 @@
 import {TaskDetailActionType} from "../Project/ProjectActions";
 import {ActionFlag} from "../../utility/EventFlag";
-import {TaskIssueType} from '../../utility/TypeFlag'
+import {ActivityType} from '../../utility/TypeFlag'
 
-const initialState : TaskIssueType[] = [];
+export interface ActivityStructure {
+    activities : ActivityType[],
+    selected_activity : ActivityType
+};
 
-export function ActivityEditReducer(state = initialState, action : TaskDetailActionType ) : TaskIssueType[] {
+const initialState : ActivityStructure = {
+    activities : [],
+    selected_activity : null
+};
 
+export function ActivityReducer(state = initialState, action : any ) : ActivityStructure {
     switch (action.type) {
-        case ActionFlag.ADD_ACTIVITY:
-             return  [...state ,action.payload ];     
-    }
+        case ActionFlag.FETCH_ACTIVITY:
+            return {...state, activities :action.payload }
 
+        case ActionFlag.SET_SELECTED_ACTIVITY:
+            return {...state, selected_activity :action.payload }
+    
+        case ActionFlag.ADD_ACTIVITY:
+             return {...state, activities :[...state.activities, action.payload] }
+    }
     return state;
 }

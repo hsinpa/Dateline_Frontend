@@ -6,6 +6,10 @@ import {PostFetch} from "../../utility/Utility";
 
 export const getAllPackage = (dispatch : Dispatch, project : ProjectType) => {
     try {
+        console.log(project);
+
+        if (project == null) return;
+
         PostFetch(TestJSONPath.FakePackage, (data : PackageType[]) => {
             let packageSets : PackageType[] = [];
             data.forEach(x => {

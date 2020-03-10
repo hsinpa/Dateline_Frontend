@@ -12,12 +12,8 @@ const mapDispatch = (dispatch : Dispatch) => {
     }
 }
 
-const mapState = (state: RooterReducerType) => ({
-    taskIssues: state.taskIssues
-});
-
 const connector = connect(
-    mapState,
+    null,
     mapDispatch
 );
 
@@ -92,7 +88,7 @@ class ProjectTask extends React.Component<PropsFromRedux> {
     
     render() {
         return <div id="task_main">
-            {this.CreateTaskIssue(this.props.taskIssues)}
+            {/* {this.CreateTaskIssue(this.props.taskIssues)} */}
         </div>
     }
 }
