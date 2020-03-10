@@ -9,32 +9,34 @@
     margin: 0.2rem 0rem;
 }
 
-#task_main {
+#package_list_panel {
 
     li {
 
     }
-    li:hover {
-        cursor: pointer;
-        background-color: cadetblue;
-    }
 
-    li .active {
-        background-color: goldenrod;
-    }
-
-    .task_list_layer_0 {
+    .package_row {
         @include task_list_layer;
+        background-color: rgb(200, 185, 231);
+
     }
 
-    .task_list_layer_1 {
+    .activity_row {
         @include task_list_layer;
         padding-left: 2rem;
     }
 
+    .activity_row:hover {
+        cursor: pointer;
+        background-color: rgb(119, 208, 211);
+    }
+
+    .activity_row .active {
+        background-color: goldenrod;
+    }
 }
 
-.project_box {
+.activity_detail_view {
     display: inline-block;
 
     border-style: solid;
@@ -42,7 +44,7 @@
     border-radius: 5px;
 
     margin: 0.5rem 0.5rem;
-  }
+}
 
   .activity_modal {
         height: 100%;

@@ -13,7 +13,7 @@ export const getAllActivity = (dispatch : Dispatch, project : ProjectType) => {
                     packageSets.push(x);
             });
 
-            console.log(packageSets);
+            //console.log(packageSets);
             dispatch({
                 type : ActionFlag.FETCH_ACTIVITY,
                 payload : packageSets

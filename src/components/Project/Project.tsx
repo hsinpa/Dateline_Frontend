@@ -6,6 +6,8 @@ import PackageListView from "../Package/PackageActivityListView";
 
 import {fetchPost, setCurrentProject} from "./ProjectActions";
 import CreateActModal from "../Activity/CreateActModal";
+import ActivityDetailView from "../Activity/ActivityDetailView";
+
 import {ActionFlag,TestJSONPath} from "../../utility/EventFlag";
 
 import {Dispatch} from "redux";
@@ -43,8 +45,10 @@ class Project extends React.Component<PropsFromRedux> {
         let boxs = [];
         let projectNum = project.length;
 
+        boxs.push(<h2>Project name</h2>);
+
         for (let i = 0; i < projectNum; i++) {
-            let titleName = "Project name " + (project[i].name);
+            let titleName = (project[i].name);
             boxs.push(<ProjectBox title={titleName} />);
 
             if (i == 0) {
@@ -57,6 +61,7 @@ class Project extends React.Component<PropsFromRedux> {
 
     componentWillMount() {
         if (this.props.projects.length == 0) {
+            console.log(this.props.projects.length);
             this.props.fetchData();
         }
     }
@@ -67,18 +72,18 @@ class Project extends React.Component<PropsFromRedux> {
 
                 <div className="container">
                     <div className="columns">
-                        <div id="project_main"  className="column ">
+                        <div id="project_main"  className="column is-1">
                             {this.CreateProjectBox(this.props.projects)}
                         </div>
 
-                        <div className="column is-four-fifths">
+                        <div className="column is-three-quarters is-8">
                             <ul>
                                 <PackageListView/>
                             </ul>
                         </div>
                 
-                        <div className="column">
-                            {/* <TaskDetail/> */}
+                        <div className="column is-3">
+                            { <ActivityDetailView/> }
                         </div>
                     </div>
                 </div>
