@@ -1,7 +1,7 @@
 
 import * as React from "react";
 import {RooterReducerType} from "../../Reducer/ReducerContainer";
-import {ProjectType, TaskIssueType, PackageType, ActivityType} from '../../utility/TypeFlag'
+import {ProjectType, PackageType, ActivityType} from '../../utility/TypeFlag'
 import {getAllPackage} from './PackageActions'
 import {getAllActivity, setOnClickActivity} from '../Activity/ActivityActions'
 
@@ -10,12 +10,6 @@ import {connect, ConnectedProps } from 'react-redux';
 
 import ActivityUtility from '../Activity/AcitivityUtility';
 
-export interface ProjectTaskType { task: TaskIssueType }
-
-type TaskProps = {
-    task: TaskIssueType,
-}
-  
 const mapState = (state: RooterReducerType) => ({
     selectedProject: state.project_structure.selected_project,
     package_structure : state.packages_structure,
@@ -64,9 +58,10 @@ class PackageListView extends React.Component<PropsFromRedux> {
         for (let i = 0; i < packageLength; i++) {
             let pack : PackageType = this.props.package_structure.packages[i];
             let filActList = this.activityUti.GetAcitivityFilterByPackageID(pack.id);
-            
+            //let totalWeight = this.activityUti.GetTotalActivityWeight(filActList);
+
             //Generate Package Row
-            task_list.push(this.CreatePackageRow(pack));
+            task_list.push(this.CreatePackageRow(pack, 100));
 
             //Generate Activity Row
             let actListLength = filActList.length;
@@ -78,10 +73,13 @@ class PackageListView extends React.Component<PropsFromRedux> {
         return task_list;
     }
 
-    CreatePackageRow(p_package : PackageType) : JSX.Element {
+    CreatePackageRow(p_package : PackageType, completedWeight : number) : JSX.Element {
+
+        console.log(p_package);
+
         let packageDom = <li className="package_row columns" >
-        <p className="column">{p_package.name}</p>
-        <p className="column">{p_package.manager}</p>
+        <div className="column"><p>{p_package.name}</p><p>{p_package.start_date} ~ {p_package.end_date}</p></div>
+        <div className="column"><p>{p_package.manager}</p></div>
         </li>;
         
         return packageDom;
@@ -91,7 +89,7 @@ class PackageListView extends React.Component<PropsFromRedux> {
         let activityDom = <li className="activity_row columns" activity_id={p_activity.id} onClick={this.ListDomOnclick}>
         <p className="column">{p_activity.name}</p>
         <p className="column">{p_activity.assignee}</p>
-        <p className="column">P{p_activity.priority}, {p_activity.issue_date}</p>
+        <p className="column">P{p_activity.priority}, {p_activity.end_date}</p>
         </li>;
         
         return activityDom;

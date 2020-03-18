@@ -32,7 +32,7 @@ class ActivityDetailView extends React.Component<PropsFromRedux> {
         return <div className="activity_detail_view container">
                 <h2>{activity.name}</h2>
                 <p>{activity.assignee}</p>
-                <p>P{activity.priority}, {activity.issue_date}</p>
+                <p>P{activity.priority}, {activity.end_date}</p>
                 <p>{activity.description}</p>
                 </div>
     }

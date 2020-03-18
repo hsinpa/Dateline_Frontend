@@ -4,9 +4,10 @@
     "project_id" : "project_id_01",
     "name" : "市場調查",
     "description" : "",
-    "priority" : "0",
+    "priority" : 1,
     "assignee" : "crew_00@gmail.com",
-    "issue_date" : "2020/06/02"
+    "start_date": "2018/12/02",
+    "end_date" : "2018/12/05"
 },
     
 {
@@ -15,10 +16,11 @@
     "project_id" : "project_id_01",
     "name" : "非洲咖啡豆",
     "description" : "",
-    "priority" : "0",
+    "priority" : 0.5,
 
     "assignee" : "crew_01@gmail.com",
-    "issue_date" : "2020/06/02"
+    "start_date": "2018/12/02",
+    "end_date" : "2018/12/05"
 },
 {
     "id" :"activity_02",
@@ -26,10 +28,11 @@
     "project_id" : "project_id_01",
     "name" : "南美咖啡豆",
     "description" : "",
-    "priority" : "0",
+    "priority" : 0.25,
 
     "assignee" : "crew_02@gmail.com",
-    "issue_date" : "2020/06/02"
+    "start_date": "2018/12/02",
+    "end_date" : "2018/12/05"
 },
 
 {
@@ -38,10 +41,11 @@
     "project_id" : "project_id_01",
     "name" : "泡製南美咖啡豆",
     "description" : "",
-    "priority" : "0",
+    "priority" : 0.75,
 
     "assignee" : "crew_01@gmail.com",
-    "issue_date" : "2020/06/02",
+    "start_date": "2018/12/02",
+    "end_date" : "2018/12/05",
     "dependency" : "activity_02"
 },
 {
@@ -50,19 +54,21 @@
     "project_id" : "project_id_01",
     "name" : "籌備商店",
     "description" : "",
-    "priority" : "0",
+    "priority" : 0.25,
 
     "assignee" : "crew_03@gmail.com",
-    "issue_date" : "2020/06/02"
+    "start_date": "2018/12/02",
+    "end_date" : "2018/12/05"
 },{
     "id" :"activity_05",
     "package_id" : "package_01",
     "project_id" : "project_id_01",
     "name" : "招募店員",
     "description" : "",
-    "priority" : "0",
+    "priority" : 0.75,
 
     "assignee" : "crew_03@gmail.com",
-    "issue_date" : "2020/06/02"
+    "start_date": "2018/12/02",
+    "end_date" : "2018/12/05"
 }
 ]

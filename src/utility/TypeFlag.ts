@@ -19,7 +19,9 @@ export interface PackageType {
     id : string,
     project_id : string,
     name : string
-    manager : string
+    manager : string,
+    start_date : string,
+    end_date : string
 };
 
 export interface ActivityType {
@@ -30,6 +32,7 @@ export interface ActivityType {
     description : string,
     priority : number,
     assignee : string,
-    issue_date : string,
-    dependency_id : string,
+    start_date : string,
+    end_date : string,
+    dependency_id? : string
 };

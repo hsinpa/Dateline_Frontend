@@ -3,20 +3,26 @@
         "id" : "package_01",
         "project_id" : "project_id_01",
         "name" : "直接回報項目",
-        "manager" : "pm@gmail.com"
+        "manager" : "pm@gmail.com",
+        "start_date": "2018/12/02",
+        "end_date" : "2018/12/05"
     },
     {
         "id" : "package_02",
         "project_id" : "project_id_01",
         "name" : "咖啡豆採買",
-        "manager" : "manager01@gmail.com"
+        "manager" : "manager01@gmail.com",
+        "start_date": "2018/12/02",
+        "end_date" : "2018/12/05"
     },
 
     {
         "id" : "package_03",
         "project_id" : "project_id_01",
         "name" : "做咖啡",
-        "manager" : "manager01@gmail.com"
+        "manager" : "manager01@gmail.com",
+        "start_date": "2018/12/02",
+        "end_date" : "2018/12/05"
     }
 
 ]
